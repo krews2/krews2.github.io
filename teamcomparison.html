@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<head>
+  <title>NBA Offensive vs Defensive Rating</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color:  blue;
+      text-align: center;
+    }
+
+    h3 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .chart-container {
+      position: relative;
+      width: 1700px;
+      height: 1700px;
+      margin: auto;
+    }
+
+  .dropdown-content {
+    display: block;
+    color: #000000;
+    padding: 5px;
+    text-decoration: none;
+}
+  </style>
+</head>
+
+<body>
+  <h1>NBA Offensive vs Defensive Rating</h1>
+ 
+  <div class="chart-container">
+
+    <div class="chartBox">
+      <label for="dropdown-teams">Filter by Last Num Games:</label>
+      <div id="dropdown-teams" class="dropdown-content">
+        <select id="teamGames" , onchange="changeLastGames()">
+          <option value=0>All Games</option>
+          <option value=1>Last Game</option>
+          <option value=2>Last 2 Games</option>
+          <option value=3>Last 3 Games</option>
+          <option value=4>Last 4 Games</option>
+          <option value=5>Last 5 Games</option>
+          <option value=6>Last 6 Games</option>
+          <option value=7>Last 7 Games</option>
+          <option value=8>Last 8 Games</option>
+          <option value=9>Last 9 Games</option>
+          <option value=10>Last 10 Games</option>
+          <option value=11>Last 11 Games</option>
+          <option value=12>Last 12 Games</option>
+          <option value=13>Last 13 Games</option>
+          <option value=14>Last 14 Games</option>
+          <option value=15>Last 15 Games</option>
+          <option value=16>Last 16 Games</option>
+          <option value=17>Last 17 Games</option>
+          <option value=18>Last 18 Games</option>
+          <option value=19>Last 19 Games</option>
+          <option value=20>Last 20 Games</option>
+
+        </select>
+      </div>
+
+      <canvas id="myChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/teamcompare.js">
+
+
+
+
+    </script>
+</body>
+
+</html>
