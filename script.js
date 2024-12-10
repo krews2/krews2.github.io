@@ -1,6 +1,6 @@
 
 let Jsondata;
-let myChart;
+let myCharting;
 
 fetch("nbadata.json")
 .then(function(response){
@@ -150,7 +150,7 @@ const animation = {
  
   const ctx=document.getElementById('myChart').getContext('2d');
 
-  myChart = new Chart(ctx, config);
+  myCharting = new Chart(ctx, config);
   
 };
   
@@ -165,12 +165,10 @@ const animation = {
       
     
       
-      // teamselected.addEventListener('change',changeTeam())
-      // const games=myj[0][teamselected]["GAME_INFO"]
-      
+
 
      
-      myChart.destroy()
+      myCharting.destroy()
       createChart(Jsondata,teamselected)
   }
 
