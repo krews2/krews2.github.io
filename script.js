@@ -34,6 +34,13 @@ fetch("nbadata.json")
 
 function createChart(Jsondata,selectTeam) {
 
+const offPtag = document.getElementById("off-rtg");
+offPtag.innerHTML = Jsondata[3][selectTeam]["OFF_RANKING"]
+
+
+const defPtag = document.getElementById("def-rtg");
+defPtag.innerHTML = Jsondata[3][selectTeam]["DEF_RANKING"]
+
 const lgavg=Jsondata[0]
 const games=Jsondata[1][selectTeam]["GAME_INFO"]
 
@@ -136,13 +143,24 @@ const animation = {
       scales: {
         x: {
           type: 'linear',
-          min: 0
+          min: 0,
+          title: {
+
+            display: true,
+            text: 'Game Number',
+            font: {
+              size: 20,
+              }
+
+          },
+          
          
         },
   
         y: {
           type: 'linear',
-          min: 85
+          min: 85,
+          max: 130
         }
       }
     }
