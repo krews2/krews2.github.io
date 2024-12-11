@@ -150,7 +150,7 @@ function createChart(Jsondata, lastN) {
 
             datasets: [{
                 label: 'NBA Rating',
-                labels: ["Label 1", "Label 2", "Label 3"],
+                
                 data: teamsArr,
                 backgroundColor: 'rgba(75, 192, 192, 0.7)',
             }]
@@ -257,11 +257,6 @@ function changeLastGames() {
     document.getElementById('teamGames').addEventListener('change', changeLastGames);
 
     const numGames = document.getElementById('teamGames').value;
-
-
-
-    // teamselected.addEventListener('change',changeTeam())
-    // const games=myj[0][teamselected]["GAME_INFO"]
 
 
 

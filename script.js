@@ -136,7 +136,20 @@ const animation = {
     
           position: 'right' // Position at the bottom
     
-      }
+      },
+
+      tooltip: {
+       
+        
+        
+        callbacks: {
+            label: (context) => {
+              
+                return `GAME NUM: ${context.label}`
+                
+              }
+        }
+    },
         
    
     },
