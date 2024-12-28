@@ -41,6 +41,9 @@ offPtag.innerHTML = Jsondata[3][selectTeam]["OFF_RANKING"]
 const defPtag = document.getElementById("def-rtg");
 defPtag.innerHTML = Jsondata[3][selectTeam]["DEF_RANKING"]
 
+const netPtag = document.getElementById("net-rtg");
+netPtag.innerHTML = Jsondata[3][selectTeam]["NET_RANKING"]
+
 const lgavg=Jsondata[0]
 const games=Jsondata[1][selectTeam]["GAME_INFO"]
 
@@ -99,6 +102,7 @@ const animation = {
       pointBorderWidth: 5,
       radius: 2,
       data: games.map(row => row.STD_OFF_RATING),
+      datanet: games.map(row => row.STD_NET_RATING)
     },
     {
       label: 'Defensive Rating',
@@ -109,6 +113,7 @@ const animation = {
       pointBorderWidth: 5,
       radius: 2,
       data: games.map(row => row.STD_DEF_RATING),
+      datanet: games.map(row => row.STD_NET_RATING)
     },
     {
       label: 'League Average Rating',
@@ -119,6 +124,8 @@ const animation = {
       pointBorderWidth: 5,
       radius: 2,
       data: lgavg.map(row => row.RTG),
+      datanet: games.map(row => row.STD_NET_RATING)
+     
     }
   ], },
     options: {
@@ -137,25 +144,52 @@ const animation = {
   
           display: true, // Enable legend
     
-          position: 'right' // Position at the bottom
+          position: 'right', // Position at the bottom,
+          labels: {
+            // This more specific font property overrides the global property
+            font: {
+                size: 14
+            }
+        }
     
       },
 
+
       tooltip: {
        
-        
+        titleFont: {
+          size: 18
+          
+
+        },
+
+        bodyFont: {
+          size: 18
+
+        },
         
         callbacks: {
+            title: () => '',
             label: (context) => {
 
-              console.log(context)
               
+
+              
+              
+              netIndex=Number(context.label)-1
              
+ 
+                // return `GAME NUM: ${context.label}, ${context.dataset.label_abb}: ${context.parsed.y.toFixed(1)}`
+                return ["GAME NUM: " + context.label,
+                  context.dataset.label_abb + ": "+ context.parsed.y.toFixed(1),
+                  "NET_RTG: " + context.dataset.datanet[netIndex].toFixed(1)
+                 ]
                
-              
-                return `GAME NUM: ${context.label}, ${context.dataset.label_abb}: ${context.parsed.y.toFixed(1)}`
                 
-              }
+              },
+
+
+              
         }
     },
     

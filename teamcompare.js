@@ -163,11 +163,27 @@ function createChart(Jsondata, lastN) {
                   display: false
                 },
 
+                
+
                 tooltip: {
+
+       
+                        titleFont: {
+                          size: 18
+                
+                        },
+                
+                        bodyFont: {
+                          size: 18
+                
+                        },
                     callbacks: {
                         label: (context) => {
-                            
-                            return `TEAM: ${context.raw.TEAM_CITY}, OFF_RTG: ${context.raw.x.toFixed(1)} and DEF_RTG: ${context.raw.y.toFixed(1)}`
+                           return [
+                            "TEAM: "+ context.raw.TEAM_CITY, 
+                            "OFF_RTG: " + context.raw.x.toFixed(1),
+                            "DEF_RTG: " +context.raw.y.toFixed(1)
+                            ]
                           }
                     }
                 }
