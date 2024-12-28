@@ -92,6 +92,7 @@ const animation = {
     labels: games.map(row => row.GAME_NO),
     datasets: [{
       label: 'Offensive Rating',
+      label_abb: 'OFF_RTG',
       borderColor:"blue",
       borderWidth: 1,
       pointBorderColor: 'blue',
@@ -101,6 +102,7 @@ const animation = {
     },
     {
       label: 'Defensive Rating',
+      label_abb: 'DEF_RTG',
       borderColor:"red",
       borderWidth: 1,
       pointBorderColor: 'red',
@@ -110,6 +112,7 @@ const animation = {
     },
     {
       label: 'League Average Rating',
+      label_abb: 'LG_AVG_RTG',
       borderColor:"black",
       borderWidth: 1,
       pointBorderColor: 'black',
@@ -144,13 +147,19 @@ const animation = {
         
         callbacks: {
             label: (context) => {
+
+              console.log(context)
               
-                return `GAME NUM: ${context.label}`
+             
+               
+              
+                return `GAME NUM: ${context.label}, ${context.dataset.label_abb}: ${context.parsed.y.toFixed(1)}`
                 
               }
         }
     },
-        
+    
+    
    
     },
       scales: {
