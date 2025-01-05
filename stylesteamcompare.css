@@ -1,0 +1,26 @@
+ /* Team Comparision Styles */
+
+ body {
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    color:  blue;
+    text-align: center;
+  }
+
+
+
+  .chart-container {
+    position: relative;
+    width: 1700px;
+    height: 1700px;
+    margin: auto;
+  }
+
+.dropdown-content {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+}

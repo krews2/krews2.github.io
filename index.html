@@ -1,256 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NBA Rating Over the Season</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-    }
-
-    h1 {
-      color:  black;
-      text-align: center;
-    }
-
-    .chartMenu {
-      width: 100vw;
-      height: 40px;
-      background: #1A1A1A;
-      color: rgba(54, 162, 235, 1);
-    }
-
-    .chartMenu p {
-      padding: 10px;
-      font-size: 20px;
-    }
-
-    .chartCard {
-      width: 100vw;
-      height: calc(100vh - 40px);
-      background: rgba(54, 162, 235, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .chartBox {
-      width: 1200px;
-      ;
-      padding: 10px;
-      border-radius: 20px;
-      border: solid 3px rgba(54, 162, 235, 1);
-      background: white;
-    }
-
-
-
-.teamicon {
-  
-  margin: 1rem;
-  padding: 2rem 2rem;
-  text-align: left;
-}
-
-
-
-.visual-content{
-  display: inline-block;
-  
-
-  
-  vertical-align: middle;
-}
-
-
-
-
-  @media only screen and (max-width: 700px) {
-  .chartBox {
-    width: 90%;
-    height: 45%;
-    padding: 20px
-  }
-
-}
-
-@media only screen and (max-width: 400px) {
-  .chartBox {
-    width: 400px;
-    padding: 20px
-  }
-
-}
-
-@media only screen and (max-width: 300px) {
-  .chartBox {
-    width: 300px;
-    padding: 10px;
-  }
-
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Float four columns side by side */
-.column {
-  float: left;
-  width: 25%;
-  padding: 0 10px;
-}
-
-/* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 32px;
-  font: 32;
-  text-align: center;
-  background-color: #f1f1f1;
-}
-
-p {
-  font-size: 40px;
-}
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dashboard</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Chart.js library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
-
-  <a href="./teamcomparison"><h4>Team Comparison Off vs Def Rating</h4></a>
-  <h1>NBA Offensive and Defensive Rating Season Progression</h1>
+    <!-- Dashboard Container -->
 
 
-  <div class="chartCard">
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Header Section -->
+            <a href="./teamcomparison"><h4>Team Comparison Off vs Def Rating</h4></a>
+            <header>
+                
+                <h2>NBA Offensive and Defensive Rating Season Progression</h2>
+            </header>
 
+            <!-- Widgets Section -->
+            <section class="widgets">
+                <!-- Widget 1 -->
+                <div class="widget">
+                    <h3>Off Rtg Rank</h3>
+                    <p id="off-rtg"></p>
+                </div>
+                <!-- Widget 2 -->
+                <div class="widget">
+                    <h3>Def Rtg Rank</h3>
+                    <p id="def-rtg"></p>
+                </div>
+                <!-- Widget 3 -->
+                <div class="widget">
+                    <h3>Net Rtg Rank</h3>
+                    <p id="net-rtg"></p>
+                </div>
 
+                
 
-    <div class="teamicon">
-      <div class="visual-content"><img class="teamimage" src=""></div>
-      <div id="dropdown-teams" class="visual-content"></div>
+                
+            </section>
+            <br>
+
+            <section class="teamimgsel"> 
+                <div class="imgs"><img class="teamimage"></div>
+
+                <div id="dropdown-teams" class="visual-content">
+
+                
 
      
-        <select id="teamsel" , onchange="changeTeam()">
-          <option value="Atlanta">Atlanta</option>
-          <option value="Boston">Boston</option>
-          <option value="Brooklyn">Brooklyn</option>
-          <option value="Charlotte">Charlotte</option>
-          <option value="Chicago">Chicago</option>
-          <option value="Cleveland">Cleveland</option>
-          <option value="Dallas">Dallas</option>
-          <option value="Denver">Denver</option>
-          <option value="Detroit">Detroit</option>
-          <option value="Golden State">Golden State</option>
-          <option value="Houston">Houston</option>
-          <option value="Indiana">Indiana</option>
-          <option value="LA">LA Clippers</option>
-          <option value="Los Angeles">LA Lakers</option>
-          <option value="Memphis">Memphis</option>
-          <option value="Miami">Miami</option>
-          <option value="Milwaukee">Milwaukee</option>
-          <option value="Minnesota">Minnesota</option>
-          <option value="New Orleans">New Orleans</option>
-          <option value="New York">New York</option>
-          <option value="Oklahoma City">Oklahoma City</option>
-          <option value="Orlando">Orlando</option>
-          <option value="Philadelphia">Philadelphia</option>
-          <option value="Phoenix">Phoenix</option>
-          <option value="Portland">Portland</option>
-          <option value="Sacramento">Sacramento</option>
-          <option value="San Antonio">San Antonio</option>
-          <option value="Toronto">Toronto</option>
-          <option value="Utah">Utah</option>
-          <option value="Washington">Washington</option>
-        </select>
+                    <select id="teamsel" , onchange="changeTeam()">
+                      <option value="Atlanta">Atlanta</option>
+                      <option value="Boston">Boston</option>
+                      <option value="Brooklyn">Brooklyn</option>
+                      <option value="Charlotte">Charlotte</option>
+                      <option value="Chicago">Chicago</option>
+                      <option value="Cleveland">Cleveland</option>
+                      <option value="Dallas">Dallas</option>
+                      <option value="Denver">Denver</option>
+                      <option value="Detroit">Detroit</option>
+                      <option value="Golden State">Golden State</option>
+                      <option value="Houston">Houston</option>
+                      <option value="Indiana">Indiana</option>
+                      <option value="LA">LA Clippers</option>
+                      <option value="Los Angeles">LA Lakers</option>
+                      <option value="Memphis">Memphis</option>
+                      <option value="Miami">Miami</option>
+                      <option value="Milwaukee">Milwaukee</option>
+                      <option value="Minnesota">Minnesota</option>
+                      <option value="New Orleans">New Orleans</option>
+                      <option value="New York">New York</option>
+                      <option value="Oklahoma City">Oklahoma City</option>
+                      <option value="Orlando">Orlando</option>
+                      <option value="Philadelphia">Philadelphia</option>
+                      <option value="Phoenix">Phoenix</option>
+                      <option value="Portland">Portland</option>
+                      <option value="Sacramento">Sacramento</option>
+                      <option value="San Antonio">San Antonio</option>
+                      <option value="Toronto">Toronto</option>
+                      <option value="Utah">Utah</option>
+                      <option value="Washington">Washington</option>
+                    </select>
+            
 
-        
-          <div class="visual-content">
-            <div class="card">
-              <h2>Off Rtg Rank</h2>
-              <br>
-              <p id="off-rtg"></p>
+                </div>
+                <br>
+
+                
+
+            </section>
+
+            <section class="legend">
+                <div><img src="/images/legend.png" alt=""></div>
+            </section>
+  
+
+
+
+            <!-- Charts Section -->
+            <section class="charts">
+                <!-- Line Chart Container -->
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                    
+                </div>
           
-            </div>
-          </div>
-
-          <div class="visual-content">
-            <div class="card">
-              <h2>Def Rtg Rank</h2>
-              <br>
-              <p id="def-rtg"></p>
-              
-            </div>
-          </div>
-
-          <div class="visual-content">
-            <div class="card">
-              <h2>Net Rtg Rank</h2>
-              <br>
-              <p id="net-rtg"></p>
-              
-            </div>
-          </div>
-
+                <!-- Line Chart 2 Container -->
+                <div class="chart-container">
+                    <div class="segment_slice" id ="gameSeg">
+                        <button onclick="changeSegment(5)">5 Game Segments</button>
+                        <button onclick="changeSegment(10)">10 Game Segments</button>
         
-        
+                    </div>
+              
+                    <canvas id="lineChart2"></canvas>
+                </div>
 
-      
-   
+                
+            </section>
 
-      <div class="chartBox">
-       
-        <canvas id="myChart"></canvas>
+            
 
-   
- 
-
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/script.js"></script>
-  <script>
-
-
-    // <block:data:2>
+     
 
 
 
 
+        </div>
 
 
-
-  </script>
+    
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
 </body>
-
 </html>
