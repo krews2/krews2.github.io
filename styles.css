@@ -200,5 +200,30 @@
     }
   }
 
-
+/* Teamcomparison.html css */
  
+  #teamcompare {
+    font-family: Arial, sans-serif;
+    background-color: white;
+  }
+
+  h1 {
+    color:  blue;
+    text-align: center;
+  }
+
+
+
+  .chart-container2 {
+    position: relative;
+    width: 1700px;
+    height: 1700px;
+    margin: auto;
+  }
+
+.dropdown-content {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+}
